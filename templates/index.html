@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="id">
   <head>
@@ -791,3 +792,798 @@
     </script>
   </body>
 </html>
+=======
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RAT Online Automation</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(
+          135deg,
+          #1a1a2e 0%,
+          #16213e 50%,
+          #0f3460 100%
+        );
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 600px;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 40px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 35px;
+      }
+
+      .logo {
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      h1 {
+        color: #fff;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .subtitle {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.95rem;
+      }
+
+      .upload-area {
+        border: 2px dashed rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        padding: 40px 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        margin-bottom: 25px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .upload-area:hover,
+      .upload-area.dragover {
+        border-color: #00d4aa;
+        background: rgba(0, 212, 170, 0.05);
+      }
+
+      .upload-area.has-file {
+        border-color: #00d4aa;
+        border-style: solid;
+        background: rgba(0, 212, 170, 0.1);
+      }
+
+      .upload-icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+      }
+
+      .upload-icon svg {
+        width: 28px;
+        height: 28px;
+        stroke: rgba(255, 255, 255, 0.7);
+      }
+
+      .upload-text {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1rem;
+        margin-bottom: 8px;
+      }
+
+      .upload-hint {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.85rem;
+      }
+
+      .file-name {
+        color: #00d4aa;
+        font-size: 0.95rem;
+        font-weight: 500;
+        margin-top: 10px;
+        display: none;
+      }
+
+      .file-name.show {
+        display: block;
+      }
+
+      #fileInput {
+        display: none;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 16px 24px;
+        border: none;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #00d4aa, #00b894);
+        color: white;
+        box-shadow: 0 10px 30px rgba(0, 212, 170, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 40px rgba(0, 212, 170, 0.4);
+      }
+
+      .btn-primary:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .btn svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      /* Progress Section */
+      .progress-section {
+        display: none;
+        margin-top: 30px;
+      }
+
+      .progress-section.active {
+        display: block;
+      }
+
+      .progress-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .progress-title {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .progress-count {
+        color: #00d4aa;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .progress-bar-container {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        height: 10px;
+        overflow: hidden;
+        margin-bottom: 25px;
+      }
+
+      .progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, #00d4aa, #00b894);
+        border-radius: 10px;
+        width: 0%;
+        transition: width 0.5s ease;
+      }
+
+      .results-list {
+        max-height: 300px;
+        overflow-y: auto;
+        padding-right: 10px;
+      }
+
+      .results-list::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .results-list::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 3px;
+      }
+
+      .results-list::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 3px;
+      }
+
+      .result-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        margin-bottom: 10px;
+        gap: 12px;
+      }
+
+      .result-status {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      .result-status.success {
+        background: #00d4aa;
+        box-shadow: 0 0 10px rgba(0, 212, 170, 0.5);
+      }
+
+      .result-status.failed {
+        background: #ff6b6b;
+        box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+      }
+
+      .result-status.processing {
+        background: #ffd93d;
+        animation: pulse 1s infinite;
+      }
+
+      .result-status.skipped {
+        background: #74b9ff;
+        box-shadow: 0 0 10px rgba(116, 185, 255, 0.5);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      .result-info {
+        flex: 1;
+      }
+
+      .result-username {
+        color: #fff;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .result-message {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.8rem;
+        margin-top: 2px;
+      }
+
+      .result-time {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.75rem;
+      }
+
+      /* Completed State */
+      .completed-message {
+        text-align: center;
+        padding: 20px;
+        display: none;
+      }
+
+      .completed-message.show {
+        display: block;
+      }
+
+      .completed-icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(0, 212, 170, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+      }
+
+      .completed-icon svg {
+        width: 30px;
+        height: 30px;
+        stroke: #00d4aa;
+      }
+
+      .completed-text {
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .completed-stats {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+      }
+
+      .btn-reset {
+        margin-top: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+      }
+
+      .btn-reset:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .btn-cancel {
+        background: rgba(255, 107, 107, 0.15);
+        color: #ff6b6b;
+        font-size: 0.75rem;
+        padding: 4px 10px;
+        min-width: auto;
+        border: 1px solid rgba(255, 107, 107, 0.3);
+      }
+
+      .btn-cancel:hover {
+        background: rgba(255, 107, 107, 0.25);
+      }
+
+      /* Error Message */
+      .error-message {
+        background: rgba(255, 107, 107, 0.1);
+        border: 1px solid rgba(255, 107, 107, 0.3);
+        border-radius: 10px;
+        padding: 15px;
+        color: #ff6b6b;
+        text-align: center;
+        margin-top: 20px;
+        display: none;
+      }
+
+      .error-message.show {
+        display: block;
+      }
+
+      /* Loading Spinner */
+      .spinner {
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Footer Styles */
+      .footer {
+        margin-top: 40px;
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-text {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+      }
+
+      .footer-text span {
+        color: #00d4aa;
+        font-weight: 500;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .social-link {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .social-link:hover {
+        color: #00d4aa;
+        transform: translateY(-3px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="header">
+          <div class="logo">
+            <img src="/static/logo_rat_automation.PNG" alt="RAT Automation Logo" />
+          </div>
+          <h1>RAT Online Automation</h1>
+          <p class="subtitle">Upload file PDF untuk memulai otomatisasi</p>
+        </div>
+
+        <form id="uploadForm">
+          <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" y1="3" x2="12" y2="15" />
+              </svg>
+            </div>
+            <p class="upload-text">Klik atau drag & drop file PDF</p>
+            <p class="upload-hint">Bisa pilih sekaligus (Hingga 10 file)</p>
+            <p class="file-name" id="fileName"></p>
+          </div>
+          <input type="file" id="fileInput" name="pdf_files" accept=".pdf" multiple />
+
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M22 2L11 13" />
+              <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+            </svg>
+            Mulai Otomatisasi
+          </button>
+        </form>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <div class="progress-section" id="progressSection">
+          <div class="progress-header">
+            <div>
+              <span class="progress-title">Proses Otomatisasi</span>
+              <span class="progress-count" id="progressCount">0/0</span>
+            </div>
+            <button class="btn btn-cancel" id="cancelBtn" onclick="cancelProcess()">
+              Batalkan
+            </button>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+          <div class="results-list" id="resultsList"></div>
+        </div>
+
+        <div class="completed-message" id="completedMessage">
+          <div class="completed-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
+          <p class="completed-text">Proses Selesai!</p>
+          <p class="completed-stats" id="completedStats"></p>
+          <button class="btn btn-reset" onclick="resetForm()">
+            Upload File Baru
+          </button>
+        </div>
+
+        <footer class="footer">
+          <p class="footer-text">
+            &copy; 2026 RAT Online Automation • Developed by
+            <span>Riki Teguh Maulana</span>
+          </p>
+          <div class="social-links">
+            <a
+              href="https://github.com/rikiteguhmaulana"
+              target="_blank"
+              class="social-link"
+              title="GitHub"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/rikiitm_/"
+              target="_blank"
+              class="social-link"
+              title="Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      const uploadArea = document.getElementById("uploadArea");
+      const fileInput = document.getElementById("fileInput");
+      const fileName = document.getElementById("fileName");
+      const uploadForm = document.getElementById("uploadForm");
+      const submitBtn = document.getElementById("submitBtn");
+      const progressSection = document.getElementById("progressSection");
+      const progressBar = document.getElementById("progressBar");
+      const progressCount = document.getElementById("progressCount");
+      const resultsList = document.getElementById("resultsList");
+      const completedMessage = document.getElementById("completedMessage");
+      const completedStats = document.getElementById("completedStats");
+      const errorMessage = document.getElementById("errorMessage");
+
+      let statusInterval = null;
+
+      // Drag and drop handlers
+      uploadArea.addEventListener("click", () => fileInput.click());
+
+      uploadArea.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        uploadArea.classList.add("dragover");
+      });
+
+      uploadArea.addEventListener("dragleave", () => {
+        uploadArea.classList.remove("dragover");
+      });
+
+      uploadArea.addEventListener("drop", (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove("dragover");
+
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          if (files.length > 10) {
+            showError("Maksimum 10 file sekaligus!");
+            return;
+          }
+          fileInput.files = files;
+          showFiles(files);
+        }
+      });
+
+      fileInput.addEventListener("change", (e) => {
+        if (e.target.files.length > 0) {
+          if (e.target.files.length > 10) {
+            showError("Maksimum 10 file sekaligus!");
+            fileInput.value = "";
+            fileName.textContent = "";
+            return;
+          }
+          showFiles(e.target.files);
+        }
+      });
+
+      function showFiles(files) {
+        const fileList = Array.from(files).map((f) => f.name).join(", ");
+        fileName.textContent = "📄 " + (files.length > 1 ? `${files.length} file dipilih` : files[0].name);
+        fileName.title = fileList;
+        fileName.classList.add("show");
+        uploadArea.classList.add("has-file");
+      }
+
+      function showFileName(name) {
+        fileName.textContent = "📄 " + name;
+        fileName.classList.add("show");
+        uploadArea.classList.add("has-file");
+      }
+
+      // Form submission
+      uploadForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        if (!fileInput.files.length) {
+          showError("Silakan pilih file PDF terlebih dahulu!");
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<div class="spinner"></div> Mengupload...';
+        hideError();
+
+        const formData = new FormData();
+        Array.from(fileInput.files).forEach(file => {
+          formData.append("pdf_files", file);
+        });
+
+        try {
+          const response = await fetch("/upload", {
+            method: "POST",
+            body: formData,
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            uploadArea.style.display = "none";
+            submitBtn.style.display = "none";
+            progressSection.classList.add("active");
+            startStatusPolling();
+          } else {
+            showError(data.message);
+            resetButton();
+          }
+        } catch (error) {
+          showError("Terjadi kesalahan saat upload file!");
+          resetButton();
+        }
+      });
+
+      function startStatusPolling() {
+        statusInterval = setInterval(checkStatus, 1000);
+      }
+
+      async function checkStatus() {
+        try {
+          const response = await fetch("/status");
+          const status = await response.json();
+
+          if (status.error) {
+            showError(status.error);
+            clearInterval(statusInterval);
+            return;
+          }
+
+          // Update progress
+          if (status.total_users > 0) {
+            const progress = (status.current_user / status.total_users) * 100;
+            progressBar.style.width = progress + "%";
+            progressCount.textContent = `${status.current_user}/${status.total_users}`;
+          }
+
+          // Update results list
+          updateResultsList(status.results);
+
+          // Check if completed
+          if (status.completed) {
+            clearInterval(statusInterval);
+            showCompletedMessage(status.results);
+          }
+        } catch (error) {
+          console.error("Error checking status:", error);
+        }
+      }
+
+      function updateResultsList(results) {
+        resultsList.innerHTML = results
+          .map(
+            (result) => `
+                <div class="result-item">
+                    <div class="result-status ${result.status}"></div>
+                    <div class="result-info">
+                        <div class="result-username">User #${result.user_number}: ${result.username}</div>
+                        <div class="result-message">${result.message}</div>
+                    </div>
+                    <div class="result-time">
+                        <div>S: ${result.start_time}</div>
+                        <div>E: ${result.end_time}</div>
+                    </div>
+                </div>
+            `,
+          )
+          .join("");
+
+        resultsList.scrollTop = resultsList.scrollHeight;
+      }
+
+      function showCompletedMessage(results) {
+        const success = results.filter((r) => r.status === "success").length;
+        const skipped = results.filter((r) => r.status === "skipped").length;
+        const failed = results.filter((r) => r.status === "failed").length;
+
+        completedStats.textContent = `${success} berhasil, ${skipped} sudah diisi, ${failed} gagal dari ${results.length} user`;
+        completedMessage.classList.add("show");
+        
+        const cancelBtn = document.getElementById("cancelBtn");
+        if (cancelBtn) cancelBtn.style.display = 'none';
+      }
+
+      function showError(message) {
+        errorMessage.textContent = message;
+        errorMessage.classList.add("show");
+      }
+
+      function hideError() {
+        errorMessage.classList.remove("show");
+      }
+
+      function resetButton() {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 2L11 13"/>
+                    <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+                </svg>
+                Mulai Otomatisasi
+            `;
+      }
+
+      function resetForm() {
+        window.location.href = "/reset";
+      }
+
+      async function cancelProcess() {
+        if (!confirm("Apakah Anda yakin ingin membatalkan proses?")) return;
+        
+        const cancelBtn = document.getElementById("cancelBtn");
+        cancelBtn.disabled = true;
+        cancelBtn.innerHTML = '<div class="spinner" style="width:12px;height:12px"></div>';
+        
+        try {
+          const response = await fetch("/cancel", { method: "POST" });
+          const data = await response.json();
+          if (!data.success) {
+            showError(data.message);
+            cancelBtn.disabled = false;
+            cancelBtn.textContent = "Batalkan";
+          }
+        } catch (error) {
+          console.error("Error cancelling process:", error);
+          cancelBtn.disabled = false;
+          cancelBtn.textContent = "Batalkan";
+        }
+      }
+    </script>
+  </body>
+</html>
+>>>>>>> bf608db594062253640a0cabf6be5983075fac9d

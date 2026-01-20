@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 # RAT Online Automation Dependencies
 pdfplumber>=0.10.0
 selenium>=4.15.0
 webdriver-manager>=4.0.0
 flask>=3.0.0
+=======
+# RAT Online Automation Dependencies
+pdfplumber>=0.10.0
+selenium>=4.15.0
+webdriver-manager>=4.0.0
+flask>=3.0.0
+>>>>>>> bf608db594062253640a0cabf6be5983075fac9d
