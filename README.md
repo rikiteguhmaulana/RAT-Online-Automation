@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ---
 title: RAT Online Automation
 emoji: 🚀
@@ -227,7 +227,7 @@ Project ini didevelop dan dikelola oleh **Riki Teguh Maulana**.
 
 _Dibuat untuk memudahkan efisiensi penginputan data RAT Online secara masal dan akurat oleh Riki Teguh Maulana (2026)._
 
-- Live Demo : https://rikitm10-rat-automation.hf.space
+- Live Demo : [https://rikitm10-rat-automation.hf.space)
 
 ## Tampilan Utama
   <img src="images/ss1.png" alt="Tampilan Aplikasi" width="400">
