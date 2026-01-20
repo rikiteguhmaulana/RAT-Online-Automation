@@ -115,7 +115,7 @@ Projek ini dapat di-deploy ke **Hugging Face Spaces** menggunakan Docker, memung
 
 ## 👨‍💻 Pengembang
 
-Dibuat dengan ❤️ oleh **Riki Teguh Maulana**.
+Dibuat oleh **Riki Teguh Maulana**.
 
 - 🌐 **GitHub**: [@rikiteguhmaulana](https://github.com/rikiteguhmaulana)
 - 📸 **Instagram**: [@rikiitm\_](https://www.instagram.com/rikiitm_/)
