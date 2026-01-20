@@ -1,4 +1,3 @@
-
 ---
 title: RAT Online Automation
 emoji: 🚀
@@ -9,229 +8,123 @@ app_file: app.py
 pinned: false
 ---
 
+<div align="center">
+
 # 🚀 RAT Online Form Automation
 
-Script Python untuk mengotomatisasi pengisian formulir web "RAT Online" dengan performa tinggi, ekstraksi data cerdas dari PDF, dan antarmuka web modern.
+**Otomatisasi Cerdas untuk Pengisian Formulir RAT Online Komida**
 
-## ✨ Fitur Unggulan
+[![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Selenium](https://img.shields.io/badge/Selenium-4.0+-green.svg?style=for-the-badge&logo=selenium&logoColor=white)](https://www.selenium.dev/)
+[![Flask](https://img.shields.io/badge/Flask-2.0+-black.svg?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![Docker](https://img.shields.io/badge/Docker-Enabled-blue.svg?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 
-- ⚡ **Turbo Speed**: Dioptimalkan untuk memproses setiap user dalam **kurang dari 30 detik**.
-- 📑 **Multi-File Upload**: Mendukung upload hingga **10 file PDF** sekaligus.
-- 🧠 **Smart PDF Parser**: Mendukung tabel multi-halaman tanpa gangguan header berulang.
-- 👻 **Headless Mode**: Berjalan di background dengan konsumsi resource rendah (Chrome Headless).
-- 🖼️ **Image Suppression**: Loading website jauh lebih cepat dengan mematikan pemuatan gambar.
-- 🕒 **Live Tracking**: Pantau statistik keberhasilan secara real-time disertai waktu **Mulai (S)** dan **Selesai (E)** untuk setiap user.
-- 🛑 **Process Cancellation**: Batalkan otomatisasi kapan pun jika terjadi kesalahan data.
-- 🔄 **Auto-Skip**: Mendeteksi dan melewati user yang sudah pernah mengisi formulir sebelumnya.
+---
+
+[✨ Fitur Utama](#-fitur-utama) • [🛠️ Instalasi](#-instalasi) • [🚀 Cara Penggunaan](#-cara-penggunaan) • [📋 Format Data](#-format-data) • [👨‍💻 Pengembang](#-pengembang)
+
+</div>
+
+## 📖 Tentang Projek
+
+**RAT Online Form Automation** adalah solusi otomatisasi berbasis Python yang dirancang untuk mempercepat proses pengisian formulir RAT Online secara masal. Dengan mengintegrasikan teknologi _Web Scraping_ (Selenium) dan _PDF Parsing_ yang cerdas, alat ini mampu memproses ratusan data anggota dalam waktu singkat dengan tingkat akurasi yang tinggi.
+
+## ✨ Fitur Utama
+
+- ⚡ **Turbo Speed Performance**: Dioptimalkan untuk memproses setiap anggota dalam **kurang dari 30 detik**.
+- 📑 **Batch PDF Processing**: Mendukung unggahan hingga **10 file PDF** sekaligus.
+- 🧠 **Smart PDF Extractor**: Algoritma cerdas yang mampu mengenali tabel di berbagai halaman tanpa terganggu oleh header tabel yang berulang.
+- 🖼️ **Resource Optimization**: Mematikan pemuatan gambar (_Image Suppression_) dan berjalan dalam mode latar belakang (_Headless_) untuk penghematan bandwidth dan RAM.
+- 🕒 **Live Dashboard**: Pantau progres keberhasilan, kegagalan, dan durasi proses secara real-time.
+- 🛑 **Control Center**: Dilengkapi fitur **Batal (Cancel)** untuk menghentikan proses secara instan jika terjadi kesalahan.
+- 🔄 **Auto-Skip Logic**: Secara cerdas melewati anggota yang sudah pernah mengisi formulir untuk menghindari duplikasi data.
 
 ## 🛠️ Instalasi
 
-1. Pastikan Python 3.8+ sudah terinstall.
-2. Clone repository dan masuk ke direktori project.
-3. Install dependensi:
+Pastikan Anda memiliki **Python 3.8** atau versi yang lebih baru terpasang di sistem Anda.
+
+1. **Clone Repositori**:
+
+   ```bash
+   git clone https://github.com/rikiteguhmaulana/rat-online-automation.git
+   cd rat-online-automation
+   ```
+
+2. **Pasang Dependensi**:
    ```bash
    pip install -r requirements.txt
    ```
 
-## 🚀 Penggunaan
+## 🚀 Cara Penggunaan
 
-### Opsi 1: Web Interface (Sangat Direkomendasikan)
+### Opsi 1: Melalui Antarmuka Web (UI) - _Direkomendasikan_
 
-Menyediakan antarmuka grafis yang memudahkan pemantauan dan upload file massal.
+Metode ini paling mudah digunakan karena menyediakan tampilan visual dan manajemen file yang lebih baik.
 
 ```bash
 python app.py
 ```
 
-Akses di browser: `http://localhost:5000`
+Akses melalui browser di: `http://localhost:5000`
 
-### Opsi 2: Command Line Interface
+### Opsi 2: Melalui Command Line (CLI)
 
-Cocok untuk penggunaan teknis atau scripting.
+Cocok untuk penggunaan teknis atau skrip otomatisasi tingkat lanjut.
 
 ```bash
-python rat_automation.py "path/ke/file.pdf"
+python rat_automation.py "path/ke/berkas_anda.pdf"
 ```
 
-### ☁️ Hosting di Hugging Face (Akses via HP)
+---
 
-Anda bisa menghosting project ini di **Hugging Face Spaces** agar bisa diakses dari mana saja (termasuk HP):
+## 🏗️ Arsitektur & Teknologi
 
-1. Buat Space baru di Hugging Face.
-2. Pilih SDK: **Docker**.
-3. Upload semua file project (termasuk `Dockerfile` yang sudah saya buatkan).
-4. Setelah build selesai, Anda akan mendapatkan URL publik.
-5. **Akses via HP**: Buka URL tersebut di **Google Chrome, Safari (iPhone), atau browser apa pun**. UI akan bekerja sempurna dan otomatisasi akan berjalan di server Hugging Face (bukan di browser HP Anda).
+```mermaid
+graph TD
+    A[Berkas PDF Anggota] --> B[PDF Parser - pdfplumber]
+    B --> C{Ekstraksi Data}
+    C --> D[Flask Web Backend]
+    D --> E[Selenium WebDriver]
+    E --> F[Chrome Headless Browser]
+    F --> G[Website RAT Online Komida]
+    G --> H[Laporan Real-time UI]
+```
 
-## 📋 Format PDF yang Didukung
+- **Backend**: Python, Flask
+- **Otomatisasi**: Selenium, WebDriver Manager
+- **Parsing Data**: pdfplumber
+- **Frontend**: Vanilla JS, HTML5, CSS3 (Modern UI)
+- **Deployment**: Docker, Hugging Face Spaces
 
-File PDF harus berisi tabel dengan kolom **Username** dan **Password**. Script ini sangat toleran terhadap format tabel yang kompleks atau terpotong halaman.
+## 📋 Format Berkas PDF
 
-| Nama | ... | Username        | Password |
-| ---- | --- | --------------- | -------- |
-| Eti  | ... | 079079001000642 | 204ce    |
+Berkas PDF harus memiliki tabel yang mengandung kolom **Username** dan **Password**. Skrip ini sangat toleran terhadap format tabel yang kompleks atau terpotong halaman.
 
-## Nilai Hardcode (Saran & Masukan)
+| No  | Nama      | Username  | Password |
+| --- | --------- | --------- | -------- |
+| 1   | Anggota A | 123456789 | abcd1    |
+| 2   | Anggota B | 987654321 | wxyz2    |
 
-Script akan mengisi kolom berikut secara otomatis:
+## ☁️ Hosting & Akses Mobile
 
-| Kriteria             | Nilai   |
-| -------------------- | ------- |
-| Pelayanan ke Anggota | baik    |
-| Produk Pinjaman      | banyak  |
-| Jumlah Pinjaman      | banyak  |
-| Simpanan             | banyak  |
-| Margin               | sedikit |
-| Lain-lain            | cukup   |
+Projek ini dapat di-deploy ke **Hugging Face Spaces** menggunakan Docker, memungkinkan Anda menjalankan otomatisasi langsung dari HP tanpa membebani perangkat Anda.
 
-## Konfigurasi
+- **Live Demo**: [Klik di Sini](https://rikitm10-rat-automation.hf.space/)
 
-Edit variabel di awal file `rat_automation.py`:
+---
 
-- `SARAN_MASUKAN`: Nilai default untuk bagian saran.
-- `TARGET_URL`: "https://komida.co.id/ratonline/"
-- `WAIT_BETWEEN_USERS`: Delay antar user (Default: 0 untuk kecepatan maksimal).
+## 👨‍💻 Pengembang
 
-## 🛡️ Catatan Keamanan & Performa
+Dibuat dengan ❤️ oleh **Riki Teguh Maulana**.
 
-- Script menggunakan Chrome WebDriver yang dikelola secara otomatis oleh `webdriver-manager`.
-- Performa kecepatan sangat bergantung pada stabilitas koneksi internet dan responsivitas server tujuan.
-- Gunakan fitur **Batalkan** di Web UI jika Anda merasa ada kesalahan konfigurasi saat proses sedang berjalan.
-
-## 👨‍💻 Developer
-
-Project ini didevelop dan dikelola oleh **Riki Teguh Maulana**.
-
-- 🌐 **GitHub**: [rikiteguhmaulana](https://github.com/rikiteguhmaulana)
+- 🌐 **GitHub**: [@rikiteguhmaulana](https://github.com/rikiteguhmaulana)
 - 📸 **Instagram**: [@rikiitm\_](https://www.instagram.com/rikiitm_/)
+- 📧 **Kontak**: [rikiteguh.dev@gmail.com]
 
 ---
 
-_Dibuat untuk memudahkan efisiensi penginputan data RAT Online secara masal dan akurat oleh Riki Teguh Maulana (2026)._
+<div align="center">
 
-- Live Demo : https://rat-online-automation.hf.space/
+_Dibuat untuk memudahkan efisiensi penginputan data RAT Online secara masal dan akurat (2026)._
 
-- Tampilan Utama
-  <img src="images/ss1.png" alt="Tampilan Aplikasi" width="400">
-
-- Tampilan Saat Proses
-  <img src="images/ss2.png" alt="Tampilan Aplikasi" width="400">
-=======
----
-title: RAT Online Automation
-emoji: 🚀
-colorFrom: green
-colorTo: indigo
-sdk: docker
-app_file: app.py
-pinned: false
----
-
-# 🚀 RAT Online Form Automation
-
-Script Python untuk mengotomatisasi pengisian formulir web "RAT Online" dengan performa tinggi, ekstraksi data cerdas dari PDF, dan antarmuka web modern.
-
-## ✨ Fitur Unggulan
-
-- ⚡ **Turbo Speed**: Dioptimalkan untuk memproses setiap user dalam **kurang dari 30 detik**.
-- 📑 **Multi-File Upload**: Mendukung upload hingga **10 file PDF** sekaligus.
-- 🧠 **Smart PDF Parser**: Mendukung tabel multi-halaman tanpa gangguan header berulang.
-- 👻 **Headless Mode**: Berjalan di background dengan konsumsi resource rendah (Chrome Headless).
-- 🖼️ **Image Suppression**: Loading website jauh lebih cepat dengan mematikan pemuatan gambar.
-- 🕒 **Live Tracking**: Pantau statistik keberhasilan secara real-time disertai waktu **Mulai (S)** dan **Selesai (E)** untuk setiap user.
-- 🛑 **Process Cancellation**: Batalkan otomatisasi kapan pun jika terjadi kesalahan data.
-- 🔄 **Auto-Skip**: Mendeteksi dan melewati user yang sudah pernah mengisi formulir sebelumnya.
-
-## 🛠️ Instalasi
-
-1. Pastikan Python 3.8+ sudah terinstall.
-2. Clone repository dan masuk ke direktori project.
-3. Install dependensi:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-## 🚀 Penggunaan
-
-### Opsi 1: Web Interface (Sangat Direkomendasikan)
-
-Menyediakan antarmuka grafis yang memudahkan pemantauan dan upload file massal.
-
-```bash
-python app.py
-```
-
-Akses di browser: `http://localhost:5000`
-
-### Opsi 2: Command Line Interface
-
-Cocok untuk penggunaan teknis atau scripting.
-
-```bash
-python rat_automation.py "path/ke/file.pdf"
-```
-
-### ☁️ Hosting di Hugging Face (Akses via HP)
-
-Anda bisa menghosting project ini di **Hugging Face Spaces** agar bisa diakses dari mana saja (termasuk HP):
-
-1. Buat Space baru di Hugging Face.
-2. Pilih SDK: **Docker**.
-3. Upload semua file project (termasuk `Dockerfile` yang sudah saya buatkan).
-4. Setelah build selesai, Anda akan mendapatkan URL publik.
-5. **Akses via HP**: Buka URL tersebut di **Google Chrome, Safari (iPhone), atau browser apa pun**. UI akan bekerja sempurna dan otomatisasi akan berjalan di server Hugging Face (bukan di browser HP Anda).
-
-## 📋 Format PDF yang Didukung
-
-File PDF harus berisi tabel dengan kolom **Username** dan **Password**. Script ini sangat toleran terhadap format tabel yang kompleks atau terpotong halaman.
-
-| Nama | ... | Username        | Password |
-| ---- | --- | --------------- | -------- |
-| Eti  | ... | 079079001000642 | 204ce    |
-
-## Nilai Hardcode (Saran & Masukan)
-
-Script akan mengisi kolom berikut secara otomatis:
-
-| Kriteria             | Nilai   |
-| -------------------- | ------- |
-| Pelayanan ke Anggota | baik    |
-| Produk Pinjaman      | banyak  |
-| Jumlah Pinjaman      | banyak  |
-| Simpanan             | banyak  |
-| Margin               | sedikit |
-| Lain-lain            | cukup   |
-
-## Konfigurasi
-
-Edit variabel di awal file `rat_automation.py`:
-
-- `SARAN_MASUKAN`: Nilai default untuk bagian saran.
-- `TARGET_URL`: "https://komida.co.id/ratonline/"
-- `WAIT_BETWEEN_USERS`: Delay antar user (Default: 0 untuk kecepatan maksimal).
-
-## 🛡️ Catatan Keamanan & Performa
-
-- Script menggunakan Chrome WebDriver yang dikelola secara otomatis oleh `webdriver-manager`.
-- Performa kecepatan sangat bergantung pada stabilitas koneksi internet dan responsivitas server tujuan.
-- Gunakan fitur **Batalkan** di Web UI jika Anda merasa ada kesalahan konfigurasi saat proses sedang berjalan.
-
-## 👨‍💻 Developer
-
-Project ini didevelop dan dikelola oleh **Riki Teguh Maulana**.
-
-- 🌐 **GitHub**: [rikiteguhmaulana](https://github.com/rikiteguhmaulana)
-- 📸 **Instagram**: [@rikiitm\_](https://www.instagram.com/rikiitm_/)
-
----
-
-_Dibuat untuk memudahkan efisiensi penginputan data RAT Online secara masal dan akurat oleh Riki Teguh Maulana (2026)._
-
-- Live Demo : [[https://rikitm10-rat-automation.hf.space/]
-
-## Tampilan Utama
-  <img src="images/ss1.png" alt="Tampilan Aplikasi" width="400">
-  
-## Tampilan Saat Proses
-  <img src="images/ss2.png" alt="Tampilan Aplikasi" width="400">
-
+</div>
