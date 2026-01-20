@@ -107,3 +107,11 @@ Project ini didevelop dan dikelola oleh **Riki Teguh Maulana**.
 ---
 
 _Dibuat untuk memudahkan efisiensi penginputan data RAT Online secara masal dan akurat oleh Riki Teguh Maulana (2026)._
+
+- Live Demo : https://rat-online-automation.hf.space/
+
+- Tampilan Utama
+  <img src="images/ss1.png" alt="Tampilan Aplikasi" width="400">
+
+- Tampilan Saat Proses
+  <img src="images/ss2.png" alt="Tampilan Aplikasi" width="400">
